@@ -80,8 +80,8 @@ class ContactsFragment : Fragment(), IContactsViews, IChatView {
         list.add("000000")
         list.add("1234567890")
         list.add("8765")
-        list.add("12345")
-        list.add("1234")
+        list.add("1234567891")
+        list.add("7894561231")
         list.add("1234567")
         list.add("9876")
         return list

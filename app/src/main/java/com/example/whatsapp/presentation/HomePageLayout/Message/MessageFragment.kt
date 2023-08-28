@@ -73,6 +73,7 @@ class MessageFragment : Fragment(), IMessagesView {
                         messageReceiver = ""
                     )
                     messageViewModel.sendMessage(chatId,messageModel)
+
                 }
             }
         }

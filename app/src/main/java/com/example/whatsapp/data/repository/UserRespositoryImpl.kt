@@ -32,7 +32,7 @@ class UserRespositoryImpl @Inject constructor(
             val contacts = userDao.getAllUsers().firstOrNull()
             if(contacts.isNullOrEmpty()) {
                 for (contact in deviceContacts) {
-                    val query = firestore.collection("users").whereEqualTo("userNumber",contact)
+                    val query = firestore.collection("users")
                     query.get().
                     addOnCompleteListener { task ->
                         if (task.isSuccessful) {
@@ -128,11 +128,14 @@ class UserRespositoryImpl @Inject constructor(
                 .addOnFailureListener {
                     trySend(Resource.Error("User Profile Creation Failed due to ${it.localizedMessage}"))
                 }
-            awaitClose()
+
 
         } catch (e: Exception) {
             trySend(Resource.Error("User Profile Creation Failed due to ${e.localizedMessage}"))
         }
+    }.catch {
+        Log.d("Extion","")
+
     }
 
     private fun getChatFromDocument(document: QueryDocumentSnapshot): ModelChat {
